@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: STARBIYA S </h3>
+<h3>Register Number: 212223040208</h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -103,6 +103,42 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
+
+## PROGRAM:
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph, start, visited, path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbor in graph[tmpnode]:
+            if not visited[neighbor]:
+                path.append(neighbor)
+                queue.append(neighbor)
+                visited[neighbor] = True
+    return path
+
+graph = defaultdict(list)
+v, e = map(int, input().split())
+for i in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)  # For undirected graph
+
+start = input()  # Changed start to 'A' to match the provided graph nodes
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph, start, visited, path)
+print(traversedpath)
+```
+## OUTPUT:
+![Screenshot 2025-03-25 184450](https://github.com/user-attachments/assets/4eeb813a-556a-4767-9761-613cacb88d61)
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
